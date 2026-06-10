@@ -1,0 +1,21 @@
+2026-06-10 12:41:16,158 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 12:41:20,848 - Logger - WARNING - This is the last execution.
+2026-06-10 12:42:36,141 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 12:42:47,738 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-10 12:45:14,254 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 12:45:22,708 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-10 12:45:41,045 - Logger - WARNING - This is the last execution.
+2026-06-10 12:58:46,612 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 12:58:54,965 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-10 12:59:42,664 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 12:59:57,168 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-10 13:00:04,114 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-10 13:00:08,657 - Logger - INFO - The connection btn1 -> btn2 is built.
+2026-06-10 13:00:13,390 - Logger - INFO - executing btn1 button
+2026-06-10 13:00:13,391 - Logger - INFO - trying to execute the function  print("hell")
+2026-06-10 13:00:13,394 - Logger - INFO - Button btn1 wass called.
+2026-06-10 13:00:13,394 - Logger - INFO - Next button to be executed is btn2
+2026-06-10 13:00:13,395 - Logger - INFO - executing btn2 button
+2026-06-10 13:00:13,395 - Logger - INFO - trying to execute the function  print("w")
+2026-06-10 13:00:13,396 - Logger - INFO - Button btn2 wass called.
+2026-06-10 13:00:13,397 - Logger - WARNING - This is the last execution.
