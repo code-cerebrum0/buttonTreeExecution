@@ -1,7 +1,6 @@
 ######
 
     # HAS risky CODE exec() 
-# uncomment line 60
 
 ######
 
@@ -14,8 +13,8 @@ from pydantic import BaseModel
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    filename='app.log',  # Removes console printing and writes to this file
-    filemode='a'         # 'a' appends data; use 'w' to overwrite on every run
+    filename='app.log', 
+    filemode='a'        
 )
 
 app = FastAPI()
@@ -35,6 +34,8 @@ class ButtonRequest(BaseModel):
 
 logger = logging.getLogger("Logger")
 
+
+
 buttons_map = {}
 
 class Button:
@@ -46,12 +47,17 @@ class Button:
         logger.info("Button %s was created and added to buttons list", self.name)
         self.isTrigger= False
 
-    def determineNextBtn(self):
+    def determineNextBtn(self): # if want to add logic to selecting newxt button it can be added here
         # dummy returning 0th element
         if not self.connectedButtonNames:
-            logger.warning("This is the last execution.")
+            logger.info("This is the last execution.")
             return
-        logger.info("Next button to be executed is %s", self.connectedButtonNames[0])
+        
+        # self.list_underlying_buttons()
+        # x = input("select the next button: ")
+        # return x
+        logger.info("Next button to be executed is %s", self.connectedButtonNames[0]) 
+
         return self.connectedButtonNames[0]
 
 
@@ -98,6 +104,7 @@ class Button:
         nxtBtn = getBtn(nxtBtnName)
         nxtBtn.trigger()
 
+
 class TriggerButton(Button):
     def __init__(self, name, function=lambda : "Not Defined"):
         super().__init__(name, function)
@@ -106,9 +113,10 @@ class TriggerButton(Button):
 #     # the button through which this function will be called will automatically become the trigger node.
 #     # and to trigger the tree just use .trigger() method
 
-
-
 # buttons.append(tn)
+
+
+
 def startCreatingConnections():
     while True:
         print(buttons_map.keys())
@@ -127,7 +135,46 @@ def getBtn(btn: str):
     return buttons_map[btn]
 
 
-def 
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+def create_google_service(path_to_credentials = "credentials.json"):
+    logger.info("Creating google service.")
+    SCOPES = ["https://www.googleapis.com/auth/documents"]
+
+    flow = InstalledAppFlow.from_client_secrets_file(
+        "credentials.json",
+        SCOPES
+    )
+
+    creds = flow.run_local_server(port=0)
+    return build("docs", "v1", credentials=creds)
+
+def create_new_doc(service, title):
+    document = service.documents().create(
+        body={"title": title}
+    ).execute()
+
+    document_id = document["documentId"]
+
+    print("Document ID:", document_id)
+    return document_id
+
+def write_to_new_doc(text, title):
+    service = create_google_service()
+    document_id = create_new_doc(service, title= title)
+
+    requests = [
+            {
+            'insertText': {
+                'location': {'index': 1,},
+                'text': text
+            }
+            }
+    ]
+
+    result = service.documents().batchUpdate(
+        documentId=document_id, body={'requests': requests}).execute()
+    return result
 
 
 
