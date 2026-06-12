@@ -1,10 +1,275 @@
-UI IS AI generated
+
+# Button Flow Backend
+
+A FastAPI backend for creating and managing button-based workflows represented as a directed graph.
+
+Buttons act as nodes, and connections between buttons act as edges. The system allows users to create buttons, connect them together, designate trigger nodes, and execute workflow traversal.
+
+> Note: This project is currently under development. Several planned features such as secure code execution, workflow persistence, and state export are not yet implemented.
+
+---
+
+## Features
+
+Currently implemented:
 
 
-Further improvements - 
+* Create buttons dynamically
+* Delete buttons
+* Create connections between buttons
+* Remove connections
+* Mark buttons as trigger nodes
+* Execute workflow traversal (However you can implement your own logic by overriding the determineNextBtn(self) function for each object of the Button class) [By default returning the button which was first commected.)
+* Application logging (Backend log is at app.log)
+* Google Docs helper functions (You need to enable the google docs api from google console.) 
 
-Containerized execution of the codes. (No effect on local machine after that)
-OR allowed functionss list. (This limits users to choose only few of the available options)
+---
 
+## Installation
 
-do not pass risky code in the code of buttons It may affect the local machine
+### Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+### Install dependencies
+
+```bash
+pip install -r req.txt
+```
+
+### Run the server
+
+```bash
+uvicorn main:app --reload
+```
+
+Server:
+
+```text
+http://localhost:8000
+```
+
+---
+
+### Button
+
+A button represents a node in the workflow graph.
+
+Each button contains:
+
+* Name
+* Function source code (stored as text)
+* List of connected buttons
+* Trigger status
+
+Example:
+
+```text
+Button A
+   |
+   v
+Button B
+   |
+   v
+Button C
+```
+
+---
+
+## API Endpoints
+
+### Create Button
+
+**POST** `/buttons`
+
+Request:
+
+```json
+{
+  "name": "ButtonA",
+  "function": "print('Hello')"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Delete Button
+
+**DELETE** `/buttons/{name}`
+
+Example:
+
+```http
+DELETE /buttons/ButtonA
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Create Connection
+
+Creates an edge between two buttons.
+
+**POST** `/edges`
+
+Request:
+
+```json
+{
+  "from": "ButtonA",
+  "to": "ButtonB"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Delete Connection
+
+**DELETE** `/edges`
+
+Request:
+
+```json
+{
+  "from": "ButtonA",
+  "to": "ButtonB"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Set Trigger Node
+
+Marks a button as a trigger node.
+
+**POST** `/trigger`
+
+Request:
+
+```json
+{
+  "name": "ButtonA"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Execute Workflow
+
+Starts traversal from the specified trigger button.
+
+**POST** `/execute`
+
+Request:
+
+```json
+{
+  "trigger": "ButtonA"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Health Check
+
+**GET** `/health`
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+## Google Docs Utilities
+
+The project currently includes helper functions for:
+
+* Creating a Google Docs service
+* Creating new documents
+* Writing to existing documents (this internally  calls the above two helper functions)
+
+These utilities are present in the codebase but are not yet integrated into the workflow execution system.
+However one can call the helper function: write_to_new_doc(text_of_doc, text_to_write) 
+via Any Button amd can write to a new document. This document can be viewed in google drive.
+
+---
+
+## Current Limitations
+
+The following features are NOT yet implemented:
+
+* Safe execution of button code
+* Containerized execution
+* Workflow persistence
+* State export endpoint (`/state`)
+* Conditional branching
+* Multiple execution paths
+---
+
+## Security Notice
+
+Button functions are currently stored as strings.
+
+The execution line:
+
+```python
+exec(self.function)
+```
+
+is intentionally disabled.
+
+Running arbitrary user code directly on the host machine is unsafe and should not be enabled without proper sandboxing.
+
