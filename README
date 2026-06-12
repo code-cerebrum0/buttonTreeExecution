@@ -5,3 +5,6 @@ Further improvements -
 
 Containerized execution of the codes. (No effect on local machine after that)
 OR allowed functionss list. (This limits users to choose only few of the available options)
+
+
+do not pass risky code in the code of buttons It may affect the local machine

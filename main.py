@@ -1,6 +1,8 @@
 ######
 
     # HAS risky CODE exec() 
+# uncomment the  exec() before running
+# do not pass risky code in the code of buttons It may affect the local machine
 
 ######
 
@@ -158,6 +160,26 @@ def create_new_doc(service, title):
 
     print("Document ID:", document_id)
     return document_id
+def write_to_existing_doc(document_id, text):
+    service = create_google_service()
+
+    requests = [
+        {
+            "insertText": {
+                "location": {
+                    "index": 1
+                },
+                "text": text
+            }
+        }
+    ]
+
+    result = service.documents().batchUpdate(
+        documentId=document_id,
+        body={"requests": requests}
+    ).execute()
+
+    return result
 
 def write_to_new_doc(text, title):
     service = create_google_service()
@@ -177,7 +199,7 @@ def write_to_new_doc(text, title):
     return result
 
 
-def run_code():
+def run_code(): # containerized execution
     ...
 
 
