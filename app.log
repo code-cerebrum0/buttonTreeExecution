@@ -1,21 +1,17 @@
-2026-06-10 12:41:16,158 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 12:41:20,848 - Logger - WARNING - This is the last execution.
-2026-06-10 12:42:36,141 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 12:42:47,738 - Logger - INFO - Button btn2 was created and added to buttons list
-2026-06-10 12:45:14,254 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 12:45:22,708 - Logger - INFO - Button btn2 was created and added to buttons list
-2026-06-10 12:45:41,045 - Logger - WARNING - This is the last execution.
-2026-06-10 12:58:46,612 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 12:58:54,965 - Logger - INFO - Button btn2 was created and added to buttons list
-2026-06-10 12:59:42,664 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 12:59:57,168 - Logger - INFO - Button btn1 was created and added to buttons list
-2026-06-10 13:00:04,114 - Logger - INFO - Button btn2 was created and added to buttons list
-2026-06-10 13:00:08,657 - Logger - INFO - The connection btn1 -> btn2 is built.
-2026-06-10 13:00:13,390 - Logger - INFO - executing btn1 button
-2026-06-10 13:00:13,391 - Logger - INFO - trying to execute the function  print("hell")
-2026-06-10 13:00:13,394 - Logger - INFO - Button btn1 wass called.
-2026-06-10 13:00:13,394 - Logger - INFO - Next button to be executed is btn2
-2026-06-10 13:00:13,395 - Logger - INFO - executing btn2 button
-2026-06-10 13:00:13,395 - Logger - INFO - trying to execute the function  print("w")
-2026-06-10 13:00:13,396 - Logger - INFO - Button btn2 wass called.
-2026-06-10 13:00:13,397 - Logger - WARNING - This is the last execution.
+2026-06-11 12:11:18,419 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-11 12:11:54,451 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-11 12:12:39,657 - Logger - INFO - Button btn1 was created and added to buttons list
+2026-06-11 12:12:58,884 - Logger - INFO - Button btn2 was created and added to buttons list
+2026-06-11 12:13:05,618 - Logger - INFO - The connection btn1 -> btn2 is built.
+2026-06-11 12:13:10,477 - Logger - INFO - executing btn1 button
+2026-06-11 12:13:10,477 - Logger - INFO - trying to execute the function  print("Going to write to googledocs")
+2026-06-11 12:13:10,478 - Logger - INFO - Button btn1 wass called.
+2026-06-11 12:13:10,478 - Logger - INFO - Next button to be executed is btn2
+2026-06-11 12:13:10,478 - Logger - INFO - executing btn2 button
+2026-06-11 12:13:10,478 - Logger - INFO - trying to execute the function  write_to_new_doc("dummy text", "dummyTitle")
+2026-06-11 12:13:10,478 - Logger - INFO - Creating google service.
+2026-06-11 12:13:11,218 - google_auth_oauthlib.flow - INFO - Please visit this URL to authorize this application: https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=811956080327-ilmse9d1s7cbuh3o1232eukq7cfckr6m.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A60837%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdocuments&state=HbyUpGtNWYDt77En25eFNzYEcWPIAL&code_challenge=8okmkKspBVz5_iGfQelTSuuYaNXtBXA2lyFB9omufeo&code_challenge_method=S256&access_type=offline
+2026-06-11 12:13:21,968 - google_auth_oauthlib.flow - INFO - "GET /?state=HbyUpGtNWYDt77En25eFNzYEcWPIAL&iss=https://accounts.google.com&code=4/0AdkVLPyKzc3OQ3b-cUkwnYvl8CtwIO2Zc-6W_gK3IoABKfYvD647RO1e-ZqDgVfu0jJMUA&scope=https://www.googleapis.com/auth/documents HTTP/1.1" 200 65
+2026-06-11 12:13:22,666 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2026-06-11 12:13:26,955 - Logger - INFO - Button btn2 wass called.
+2026-06-11 12:13:26,955 - Logger - INFO - This is the last execution.
